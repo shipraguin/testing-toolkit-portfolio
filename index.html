@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Software Testing & QA Toolkit – Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+        content="Portfolio-style overview of my software testing and QA tools: browser, API, mobile, performance, CI/CD, reporting and more." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-card: #0f172a;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56,189,248,0.1);
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-subtle: #1f2937;
+      --radius-xl: 18px;
+      --shadow-soft: 0 18px 35px rgba(15,23,42,0.8);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #0b1120 0, #020617 45%, #020617 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 18px 64px;
+    }
+
+    header {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-bottom: 32px;
+    }
+
+    @media (min-width: 768px) {
+      header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+
+    .title-block h1 {
+      font-size: clamp(1.9rem, 3vw, 2.4rem);
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    .title-highlight {
+      color: var(--accent);
+    }
+
+    .subtitle {
+      margin-top: 4px;
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      max-width: 600px;
+    }
+
+    .tagline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border-radius: 999px;
+      padding: 5px 11px;
+      border: 1px solid rgba(56,189,248,0.3);
+      margin-bottom: 6px;
+    }
+
+    .tagline-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(56,189,248,0.7);
+    }
+
+    .contact {
+      font-size: 0.92rem;
+      text-align: left;
+    }
+
+    .contact a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .contact a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      gap: 26px;
+    }
+
+    .section-card {
+      background: rgba(15,23,42,0.95);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      padding: 20px 18px 18px;
+      backdrop-filter: blur(12px);
+    }
+
+    @media (min-width: 768px) {
+      .section-card {
+        padding: 22px 22px 20px;
+      }
+    }
+
+    .section-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .section-header h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .section-header p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .filter-btn {
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(15,23,42,0.7);
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      padding: 6px 11px;
+      cursor: pointer;
+      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.06s ease;
+    }
+
+    .filter-btn:hover {
+      border-color: rgba(148,163,184,0.9);
+      color: #e5e7eb;
+    }
+
+    .filter-btn.active {
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-color: rgba(56,189,248,0.6);
+      transform: translateY(-1px);
+    }
+
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 12px;
+    }
+
+    .tool-card {
+      border-radius: 14px;
+      border: 1px solid rgba(31,41,55,0.9);
+      background: radial-gradient(circle at top left, rgba(56,189,248,0.15), transparent 55%);
+      padding: 10px 11px 11px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.13s ease, box-shadow 0.13s ease, border-color 0.13s ease;
+    }
+
+    .tool-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(15,23,42,0.0), rgba(15,23,42,0.85));
+      pointer-events: none;
+    }
+
+    .tool-card-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(56,189,248,0.45);
+      box-shadow: 0 12px 25px rgba(15,23,42,0.9);
+    }
+
+    .tool-name {
+      font-size: 0.96rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .tool-category {
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .tool-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .tool-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .pill {
+      padding: 3px 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.5);
+      font-size: 0.72rem;
+      color: #cbd5f5;
+    }
+
+    .tool-name a,
+    .tool-name a:visited {
+      margin-left: 6px; 
+      color: #ffffff !important;
+      text-decoration: none;
+    }
+
+    .tool-name a:hover {
+      color: var(--accent) !important;
+    }
+
+    .contact strong {
+      font-size: 1.4rem;
+      font-weight: 700;
+      display: inline-block;
+      margin-bottom: 4px;
+    }
+
+
+    .footer-note {
+      margin-top: 8px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .footer-note strong {
+      color: #e5e7eb;
+    }
+
+    footer {
+      margin-top: 14px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      opacity: 0.85;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="title-block">
+        <div class="tagline">
+          <!-- <span class="tagline-dot"></span> -->
+          • Software Testing • Automation • Manual • Tooling
+        </div>
+        <h1>
+          Software Testing &amp; QA Toolkit
+          <span class="title-highlight">Portfolio</span>
+        </h1>
+        <p class="subtitle">
+          A focused overview of the tools I use across browser, API, mobile, performance, CI/CD,
+          reporting, and infrastructure testing.
+        </p>
+      </div>
+      <div class="contact">
+        <div><strong>Shipra Guin</strong></div>
+        <div>QA Automation Engineer</div>
+        <div>Email: <a href="mailto:shipraguin@gmail.com">shipraguin@gmail.com</a></div>
+        <div>GitHub: <a href="https://github.com/shipraguin" target="_blank">github.com/shipraguin</a></div>
+        <div>LinkedIn: <a href="https://www.linkedin.com/in/shipraguin/" target="_blank">linkedin.com/in/shipraguin/</a></div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section-card">
+        <div class="section-header">
+          <h2>Tool Stack</h2>
+          <p>Filter by category to see where I have used each tool in projects.</p>
+        </div>
+
+        <div class="filters">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="ui">Browser / UI</button>
+          <button class="filter-btn" data-filter="api">API</button>
+          <button class="filter-btn" data-filter="bdd">BDD</button>
+          <button class="filter-btn" data-filter="mobile">Mobile</button>
+          <button class="filter-btn" data-filter="performance">Performance</button>
+          <button class="filter-btn" data-filter="cicd">CI/CD &amp; DevOps</button>
+          <button class="filter-btn" data-filter="cloud">Cloud Platforms</button>
+          <button class="filter-btn" data-filter="database">Database</button>
+          <button class="filter-btn" data-filter="inspection">Code Inspection</button>
+          <button class="filter-btn" data-filter="reporting">Reporting</button>
+          <button class="filter-btn" data-filter="observability">Logging &amp; Monitoring</button>
+          <button class="filter-btn" data-filter="management">Test Management</button>
+          <button class="filter-btn" data-filter="ide">IDEs</button>
+          <button class="filter-btn" data-filter="vcs">Version Control</button>
+        </div>
+
+        <div class="tool-grid">
+          <!-- UI / Browser Testing -->
+          <article class="tool-card" data-category="ui">
+            <div class="tool-card-inner">
+              <div class="tool-category">Browser / UI</div>
+              <div class="tool-name">Playwright
+                <a href="https://playwright.dev/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                End-to-end tests for modern web apps, including visual checks and multi-browser runs.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Cross-browser</span>
+                <span>JS / TS</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card" data-category="ui">
+            <div class="tool-card-inner">
+              <div class="tool-category">Browser / UI</div>
+              <div class="tool-name">Selenium
+                <a href="https://www.selenium.dev/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                UI automation for legacy and modern web applications, integrated into CI pipelines.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Cross-browser</span>
+                <span>Java / Python</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card" data-category="ui">
+            <div class="tool-card-inner">
+              <div class="tool-category">Browser / UI</div>
+              <div class="tool-name">Cypress
+                <a href="cypress.io" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Component and end-to-end testing for SPAs with rich debugging and time-travel UI.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Front-end focus</span>
+                <span>JS</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card" data-category="ui">
+            <div class="tool-card-inner">
+              <div class="tool-category">Browser / UI</div>
+              <div class="tool-name">BrowserStack
+                <a href="https://www.browserstack.com/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Cross-browser and cross-device execution for real-device coverage.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Cross-browser</span>
+                <span>Java / Python / Ruby</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card" data-category="ui">
+            <div class="tool-card-inner">
+              <div class="tool-category">Browser / UI</div>
+              <div class="tool-name">TestSigma
+                <a href="https://testsigma.com/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                No-code/low-code test automation platform for web, mobile, and API testing with cross-browser execution.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Cross-browser</span>
+                <span>No-code / Cloud</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card" data-category="ui">
+            <div class="tool-card-inner">
+              <div class="tool-category">Browser / UI</div>
+              <div class="tool-name">WebdriverIO
+                <a href="https://webdriver.io/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Next-generation browser automation framework built on WebDriver and DevTools protocols with powerful plugins.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">WebDriver / DevTools</span>
+                <span>JS / TS</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card" data-category="ui">
+            <div class="tool-card-inner">
+              <div class="tool-category">Browser / UI</div>
+              <div class="tool-name">Robot Framework
+                <a href="https://robotframework.org/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Keyword-driven automation framework supporting web, API, mobile, and data-driven testing via rich libraries.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Keyword-driven</span>
+                <span>Python</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card" data-category="ui">
+            <div class="tool-card-inner">
+              <div class="tool-category">Browser / UI</div>
+              <div class="tool-name">UFT One
+                <a href="https://www.opentext.com/products/uft-one" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Enterprise functional test automation tool for web, desktop, and ERP applications using keyword-driven and scripted testing.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Enterprise automation</span>
+                <span>VBScript</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- API -->
+          <article class="tool-card" data-category="api">
+            <div class="tool-card-inner">
+              <div class="tool-category">API Testing</div>
+              <div class="tool-name">Postman
+                <a href="https://www.postman.com/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Designing, executing and automating REST API collections with environment configs.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">REST</span>
+                <span>Collections / Newman</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card" data-category="api">
+            <div class="tool-card-inner">
+              <div class="tool-category">API Testing</div>
+              <div class="tool-name">SoapUI
+                <a href="https://www.soapui.org/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Functional testing for SOAP and REST services with assertions, mocks, and data-driven tests.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">SOAP / REST</span>
+                <span>UI-based</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card" data-category="api">
+            <div class="tool-card-inner">
+              <div class="tool-category">API Testing</div>
+              <div class="tool-name">ReadyAPI
+                <a href="https://www.smartbear.com/product/ready-api/overview/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Advanced API testing suite with automation, security scans, mocking, and CI/CD integration.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Enterprise</span>
+                <span>SmartBear</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card" data-category="api">
+            <div class="tool-card-inner">
+              <div class="tool-category">API Design</div>
+              <div class="tool-name">Swagger
+                <a href="https://swagger.io/tools/swagger-ui/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                API documentation and testing interface for exploring REST endpoints using OpenAPI specs.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">API Explorer</span>
+                <span>OpenAPI</span>
+              </div>
+            </div>
+          </article>
+          
+          <article class="tool-card" data-category="api">
+            <div class="tool-card-inner">
+              <div class="tool-category">API Testing</div>
+              <div class="tool-name">Bruno
+                <a href="https://www.usebruno.com/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Lightweight, Git-friendly alternative to Postman for scripting and running API requests.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Local-first</span>
+                <span>Collections</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card" data-category="api">
+            <div class="tool-card-inner">
+              <div class="tool-category">API Testing</div>
+              <div class="tool-name">RESTAssured
+                <a href="https://rest-assured.io/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Backend test automation framework for REST APIs with reusable test suites.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">CI integrated</span>
+                <span>Java</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card" data-category="bdd">
+            <div class="tool-card-inner">
+              <div class="tool-category">BDD</div>
+              <div class="tool-name">Cucumber
+                <a href="https://cucumber.io/docs/cucumber/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Behavior-driven development framework using Gherkin to define test scenarios in plain language.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Gherkin</span>
+                <span>Java / JS / Ruby</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card" data-category="bdd">
+            <div class="tool-card-inner">
+              <div class="tool-category">BDD</div>
+              <div class="tool-name">SpecFlow
+                <a href="https://specflow.org/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                .NET-based BDD framework enabling Gherkin-based scenarios with powerful integrations and tooling support.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Gherkin</span>
+                <span>.NET</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Mobile -->
+          <article class="tool-card" data-category="mobile">
+            <div class="tool-card-inner">
+              <div class="tool-category">Mobile Testing</div>
+              <div class="tool-name">Appium
+                <a href="https://appium.io/docs/en/2.0/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Functional testing for Android/iOS apps on emulators and real devices.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Native &amp; hybrid</span>
+                <span>Python / Java</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card" data-category="mobile">
+            <div class="tool-card-inner">
+              <div class="tool-category">Mobile Testing</div>
+              <div class="tool-name">Espresso
+                <a href="https://developer.android.com/training/testing/espresso" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Android-native UI testing framework for fast, reliable, and synchronized automated tests.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Android UI tests</span>
+                <span>Java / Kotlin</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Performance -->
+          <article class="tool-card" data-category="performance">
+            <div class="tool-card-inner">
+              <div class="tool-category">Performance</div>
+              <div class="tool-name">Apache JMeter
+                <a href="https://jmeter.apache.org/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Load &amp; stress testing to analyse throughput, response time and system bottlenecks.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">HTTP, DB, APIs</span>
+                <span>GUI &amp; CLI</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card" data-category="performance">
+            <div class="tool-card-inner">
+              <div class="tool-category">Performance</div>
+              <div class="tool-name">k6
+                <a href="https://k6.io/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Scriptable load testing as code, suited for CI/CD pipelines and cloud runs.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Load as code</span>
+                <span>JS</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card" data-category="performance">
+            <div class="tool-card-inner">
+              <div class="tool-category">Performance</div>
+              <div class="tool-name">LoadRunner
+                <a href="https://www.opentext.com/en-gb/products/professional-performance-engineering" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Enterprise-grade performance engineering suite for large-scale load, stress, and endurance testing.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Enterprise</span>
+                <span>Protocol-level</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- CI/CD & DevOps -->
+          <article class="tool-card" data-category="cicd">
+            <div class="tool-card-inner">
+              <div class="tool-category">CI/CD</div>
+              <div class="tool-name">GitHub Actions
+                <a href="https://docs.github.com/en/actions/get-started/understand-github-actions" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Pipelines for running tests, linting and deployments on every push/PR.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Cloud CI</span>
+                <span>YAML workflows</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card" data-category="cicd">
+            <div class="tool-card-inner">
+              <div class="tool-category">CI/CD</div>
+              <div class="tool-name">GitLab CI
+                <a href="https://docs.gitlab.com/ci/" target="_blank">
+                    <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                End-to-end pipelines integrating unit, UI, API and performance tests.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Stages / jobs</span>
+                <span>Docker runners</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card" data-category="cicd">
+            <div class="tool-card-inner">
+              <div class="tool-category">CI/CD</div>
+              <div class="tool-name">Jenkins
+                <a href="https://www.jenkins.io/" target="_blank">
+                    <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Orchestrating regression suites and nightly jobs with reporting.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">On-prem CI</span>
+                <span>Multibranch</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card" data-category="cicd">
+            <div class="tool-card-inner">
+              <div class="tool-category">CI/CD</div>
+              <div class="tool-name">Azure DevOps
+                <a href="https://azure.microsoft.com/en-us/products/devops" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                End-to-end DevOps platform providing pipelines, repositories, work tracking and deployment automation.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Pipelines • Repos</span>
+                <span>DevOps</span>
+              </div>
+            </div>
+          </article>
+
+
+          <!-- Containerization -->
+          <article class="tool-card" data-category="cicd">
+            <div class="tool-card-inner">
+              <div class="tool-category">Containers</div>
+              <div class="tool-name">Docker
+                <a href="https://www.docker.com/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Containerised test environments for consistent local and CI runs.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Compose / images</span>
+                <span>Infra</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card" data-category="cicd">
+            <div class="tool-card-inner">
+              <div class="tool-category">Containers</div>
+              <div class="tool-name">Kubernetes
+                <a href="https://kubernetes.io/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Orchestrating containerized workloads and services across clusters.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">K8s</span>
+                <span>Orchestration</span>
+              </div>
+            </div>
+          </article>
+
+
+          <!-- Cloud Platforms -->
+          <article class="tool-card" data-category="cloud">
+              <div class="tool-card-inner">
+                <div class="tool-category">Cloud Platform</div>
+                <div class="tool-name">Amazon Web Services
+                  <a href="https://aws.amazon.com/" target="_blank">
+                    <i class="bi bi-box-arrow-up-right"></i>
+                  </a>
+                </div>
+                <p class="tool-desc">
+                  Used for hosting applications, automated tests, cloud infrastructure, and deployments.
+                </p>
+                <div class="tool-meta">
+                  <span class="pill">EC2 • S3 • Lambda</span>
+                  <span>AWS</span>
+                </div>
+              </div>
+          </article>
+
+          <article class="tool-card" data-category="cloud">
+              <div class="tool-card-inner">
+                <div class="tool-category">Cloud Platform</div>
+                <div class="tool-name">Google Cloud Platform
+                  <a href="https://cloud.google.com/" target="_blank">
+                    <i class="bi bi-box-arrow-up-right"></i>
+                  </a>
+                </div>
+                <p class="tool-desc">
+                  Used for BigQuery analytics, cloud compute, dashboards, and automating QA workflows.
+                </p>
+                <div class="tool-meta">
+                  <span class="pill">BigQuery • GCE</span>
+                  <span>GCP</span>
+                </div>
+              </div>
+          </article>
+
+          <article class="tool-card" data-category="cloud">
+              <div class="tool-card-inner">
+                <div class="tool-category">Cloud Platform</div>
+                <div class="tool-name">Microsoft Azure
+                  <a href="https://azure.microsoft.com/en-us" target="_blank">
+                    <i class="bi bi-box-arrow-up-right"></i>
+                  </a>
+                </div>
+                <p class="tool-desc">
+                  Used for pipelines, cloud storage, serverless compute and Azure DevOps automation.
+                </p>
+                <div class="tool-meta">
+                  <span class="pill">DevOps • Pipelines</span>
+                  <span>Azure</span>
+                </div>
+              </div>
+          </article>
+
+          <!-- Database -->
+          <article class="tool-card" data-category="database">
+            <div class="tool-card-inner">
+              <div class="tool-category">Database</div>
+              <div class="tool-name">
+                PostgreSQL
+                <a href="https://www.postgresql.org/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Open-source relational database widely used for reliable and scalable systems.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">SQL</span>
+                <span>Postgres</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card" data-category="database">
+            <div class="tool-card-inner">
+              <div class="tool-category">Database</div>
+              <div class="tool-name">
+                Oracle Database
+                <a href="https://www.oracle.com/ae/database/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Enterprise-grade relational database with strong performance and security.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">RDBMS</span>
+                <span>Oracle</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card" data-category="database">
+            <div class="tool-card-inner">
+              <div class="tool-category">Database</div>
+              <div class="tool-name">
+                Microsoft SQL Server
+                <a href="https://www.microsoft.com/en-us/sql-server/sql-server-downloads" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Microsoft's relational database platform for analytics and transactional workloads.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">T-SQL</span>
+                <span>MS SQL</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card" data-category="database">
+            <div class="tool-card-inner">
+              <div class="tool-category">Database</div>
+              <div class="tool-name">
+                MySQL
+                <a href="https://www.mysql.com/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Popular open-source database used in web apps, CMS systems, and SaaS platforms.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">SQL</span>
+                <span>MySQL</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card" data-category="database">
+            <div class="tool-card-inner">
+              <div class="tool-category">Database</div>
+              <div class="tool-name">
+                MongoDB
+                <a href="https://www.mongodb.com/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                NoSQL document database used for flexible schemas and fast iterations.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">NoSQL</span>
+                <span>Mongo</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card" data-category="database">
+            <div class="tool-card-inner">
+              <div class="tool-category">Database</div>
+              <div class="tool-name">
+                Neo4j
+                <a href="https://neo4j.com/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Graph database designed for queries involving relationships and connected data.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Graph DB</span>
+                <span>Cypher</span>
+              </div>
+            </div>
+          </article>
+
+
+          <!-- Code Inspection / Code Quality -->
+          <article class="tool-card" data-category="inspection">
+            <div class="tool-card-inner">
+              <div class="tool-category">Code Quality</div>
+              <div class="tool-name">SonarQube
+                <a href="https://www.sonarsource.com/products/sonarqube/" target="_blank">
+                    <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Static analysis for vulnerabilities, code smells, and maintainability issues.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Quality gates</span>
+                <span>CI integrated</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card" data-category="inspection">
+            <div class="tool-card-inner">
+              <div class="tool-category">Code Quality</div>
+              <div class="tool-name">ESLint
+                <a href="https://eslint.org/" target="_blank">
+                    <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                JavaScript/TypeScript linting to enforce code style and catch issues early.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Linting</span>
+                <span>JS / TS</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Reporting -->
+          <article class="tool-card" data-category="reporting">
+            <div class="tool-card-inner">
+              <div class="tool-category">Reporting</div>
+              <div class="tool-name">Allure Report
+                <a href="https://allurereport.org/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Rich, interactive test reporting with graphs, timelines, attachments, and execution insights.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Visual reports</span>
+                <span>Automation</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card" data-category="reporting">
+            <div class="tool-card-inner">
+              <div class="tool-category">Reporting</div>
+              <div class="tool-name">Cucumber HTML
+                <a href="https://cucumber.io/docs/cucumber/reporting/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Gherkin-based reporting for BDD frameworks with scenario, step, and tag-level insights.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">BDD reports</span>
+                <span>Cucumber</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card" data-category="reporting">
+            <div class="tool-card-inner">
+              <div class="tool-category">Reporting</div>
+              <div class="tool-name">Extent Reports
+                <a href="https://www.extentreports.com/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Highly customizable HTML reporting with categories, screenshots, and dashboard-style summaries.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Customizable</span>
+                <span>Java / JS</span>
+              </div>
+            </div>
+          </article>
+
+
+          <!-- Observability -->
+          <article class="tool-card" data-category="observability">
+            <div class="tool-card-inner">
+              <div class="tool-category">Monitoring</div>
+              <div class="tool-name">Datadog
+                <a href="https://www.datadoghq.com/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Monitoring application performance and correlating logs with test runs.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">APM &amp; logs</span>
+                <span>Monitoring</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card" data-category="observability">
+            <div class="tool-card-inner">
+              <div class="tool-category">Monitoring</div>
+              <div class="tool-name">Sentry
+                <a href="https://sentry.io/welcome/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Real-time error tracking and performance monitoring with stack traces, alerts, and release insights.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Error tracking</span>
+                <span>Monitoring</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card" data-category="observability">
+            <div class="tool-card-inner">
+              <div class="tool-category">Logging</div>
+              <div class="tool-name">Kibana
+                <a href="https://www.elastic.co/kibana" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Analysing errors and functional issues via centralised logs.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Log search</span>
+                <span>Elasticsearch</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Management -->
+          <article class="tool-card" data-category="management">
+            <div class="tool-card-inner">
+              <div class="tool-category">Test Management</div>
+              <div class="tool-name">Jira
+                <a href="https://www.atlassian.com/software/jira" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                User stories, bugs and test tasks tracked in agile boards.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Scrum / Kanban</span>
+                <span>Workflows</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card" data-category="management">
+            <div class="tool-card-inner">
+              <div class="tool-category">Test Management</div>
+              <div class="tool-name">TestRail
+                <a href="https://www.testrail.com/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Structuring test cases, runs and coverage for releases.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Traceability</span>
+                <span>Integrations</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card" data-category="management">
+            <div class="tool-card-inner">
+              <div class="tool-category">Test Management</div>
+              <div class="tool-name">Zephyr
+                <a href="https://smartbear.com/test-management/zephyr-enterprise/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Enterprise test management solution offering test planning, execution, traceability, and reporting.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Enterprise</span>
+                <span>SmartBear</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card" data-category="management">
+            <div class="tool-card-inner">
+              <div class="tool-category">Test Management</div>
+              <div class="tool-name">Xray
+                <a href="https://www.getxray.app/test-management/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Jira-native test management solution supporting manual, automated, and BDD testing with full traceability.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Jira integrated</span>
+                <span>Manual + Automated</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card" data-category="management">
+            <div class="tool-card-inner">
+              <div class="tool-category">Test Management</div>
+              <div class="tool-name">HP ALM
+                <a href="https://www.microfocus.com/en-us/products/alm-quality-center/overview" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Comprehensive lifecycle management tool for requirements, test planning, execution, and defect tracking.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Enterprise</span>
+                <span>Quality Center</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- IDEs -->
+          <article class="tool-card" data-category="ide">
+            <div class="tool-card-inner">
+              <div class="tool-category">IDE</div>
+              <div class="tool-name">Visual Studio Code
+                <a href="https://code.visualstudio.com/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Lightweight, extensible editor used for automation, debugging, and development workflows.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Extensions</span>
+                <span>JS / Python</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card" data-category="ide">
+            <div class="tool-card-inner">
+              <div class="tool-category">IDE</div>
+              <div class="tool-name">PyCharm
+                <a href="https://www.jetbrains.com/pycharm/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Python-focused IDE for automated testing, refactoring, and data processing tasks.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Python</span>
+                <span>JetBrains</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card" data-category="ide">
+            <div class="tool-card-inner">
+              <div class="tool-category">IDE</div>
+              <div class="tool-name">IntelliJ IDEA
+                <a href="https://www.jetbrains.com/idea/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Java-centric IDE widely used for backend, automation frameworks, and enterprise development.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Java</span>
+                <span>JetBrains</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card" data-category="ide">
+            <div class="tool-card-inner">
+              <div class="tool-category">IDE</div>
+              <div class="tool-name">Eclipse
+                <a href="https://eclipseide.org/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Open-source Java IDE used for enterprise projects, plugins, and automation development.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Java</span>
+                <span>Plugins</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card" data-category="ide">
+            <div class="tool-card-inner">
+              <div class="tool-category">Editor</div>
+              <div class="tool-name">Notepad++
+                <a href="https://notepad-plus-plus.org/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Lightweight text editor for quick edits, scripts, and configuration files.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Lightweight</span>
+                <span>Utilities</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Version Control -->
+          <article class="tool-card" data-category="vcs">
+            <div class="tool-card-inner">
+              <div class="tool-category">Version Control</div>
+              <div class="tool-name">Git
+                <a href="https://git-scm.com/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Distributed version control system used for branching, merging, and tracking code changes.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">CLI / GUI</span>
+                <span>Source control</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card" data-category="vcs">
+            <div class="tool-card-inner">
+              <div class="tool-category">Version Control</div>
+              <div class="tool-name">GitHub
+                <a href="https://github.com/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Cloud-based platform for hosting repositories, managing pull requests and enabling team collaboration.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Repos</span>
+                <span>PRs / Actions</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card" data-category="vcs">
+            <div class="tool-card-inner">
+              <div class="tool-category">Version Control</div>
+              <div class="tool-name">GitLab
+                <a href="https://about.gitlab.com/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                DevOps-ready repository manager supporting CI/CD pipelines, issue tracking, and collaboration.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Repos</span>
+                <span>GitLab CI</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card" data-category="vcs">
+            <div class="tool-card-inner">
+              <div class="tool-category">Version Control</div>
+              <div class="tool-name">Bitbucket
+                <a href="https://bitbucket.org/product/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Git repository hosting with strong Jira integration and built-in CI/CD via Pipelines.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Repos</span>
+                <span>Atlassian</span>
+              </div>
+            </div>
+          </article>
+
+
+
+
+
+
+        </div>
+        <p class="footer-note">
+          <strong>Note:</strong> This page focuses on tools I've actually used in projects.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="year"></span> Shipra Guin — Software Testing &amp; QA Toolkit
+    </footer>
+  </div>
+
+  <script>
+    // Filter logic
+    const buttons = document.querySelectorAll(".filter-btn");
+    const cards = document.querySelectorAll(".tool-card");
+
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        buttons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        const filter = btn.dataset.filter;
+        cards.forEach(card => {
+          const category = card.dataset.category;
+          if (filter === "all" || category.includes(filter)) {
+            card.style.display = "";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      });
+    });
+
+    // Year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
