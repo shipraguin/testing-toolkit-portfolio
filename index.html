@@ -7,8 +7,7 @@
   <meta name="description"
         content="Portfolio-style overview of my software testing and QA tools: browser, API, mobile, performance, CI/CD, reporting and more." />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   <style>
     :root {
       --bg: #050816;
@@ -292,7 +291,6 @@
     <header>
       <div class="title-block">
         <div class="tagline">
-          <!-- <span class="tagline-dot"></span> -->
           • Software Testing • Automation • Manual • Tooling
         </div>
         <h1>
@@ -327,6 +325,7 @@
           <button class="filter-btn" data-filter="bdd">BDD</button>
           <button class="filter-btn" data-filter="mobile">Mobile</button>
           <button class="filter-btn" data-filter="performance">Performance</button>
+          <button class="filter-btn" data-filter="frameworks">Test Frameworks</button>
           <button class="filter-btn" data-filter="cicd">CI/CD &amp; DevOps</button>
           <button class="filter-btn" data-filter="cloud">Cloud Platforms</button>
           <button class="filter-btn" data-filter="database">Database</button>
@@ -336,6 +335,7 @@
           <button class="filter-btn" data-filter="management">Test Management</button>
           <button class="filter-btn" data-filter="ide">IDEs</button>
           <button class="filter-btn" data-filter="vcs">Version Control</button>
+          <button class="filter-btn" data-filter="languages">Languages</button>
         </div>
 
         <div class="tool-grid">
@@ -721,6 +721,79 @@
             </div>
           </article>
 
+          <!-- Test Frameworks -->
+          <article class="tool-card" data-category="frameworks">
+            <div class="tool-card-inner">
+              <div class="tool-category">Test Framework</div>
+              <div class="tool-name">Vitest
+                <a href="https://vitest.dev/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Used for fast JavaScript/TypeScript unit testing with modern tooling support.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Unit tests</span>
+                <span>JS / TS</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card" data-category="frameworks">
+            <div class="tool-card-inner">
+              <div class="tool-category">Test Framework</div>
+              <div class="tool-name">JUnit
+                <a href="https://junit.org/junit5/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Used for Java-based unit and integration testing in backend and API projects.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Unit tests</span>
+                <span>Java</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card" data-category="frameworks">
+            <div class="tool-card-inner">
+              <div class="tool-category">Test Framework</div>
+              <div class="tool-name">TestNG
+                <a href="https://testng.org/doc/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Used for structured Java automation frameworks including REST Assured suites.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Automation</span>
+                <span>Java</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card" data-category="frameworks">
+            <div class="tool-card-inner">
+              <div class="tool-category">Test Framework</div>
+              <div class="tool-name">Pytest
+                <a href="https://pytest.org/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Used for Python-based automation, API tests and modular test frameworks.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Automation</span>
+                <span>Python</span>
+              </div>
+            </div>
+          </article>
+
           <!-- CI/CD & DevOps -->
           <article class="tool-card" data-category="cicd">
             <div class="tool-card-inner">
@@ -788,12 +861,30 @@
                 End-to-end DevOps platform providing pipelines, repositories, work tracking and deployment automation.
               </p>
               <div class="tool-meta">
-                <span class="pill">Pipelines • Repos</span>
+                <span class="pill">Pipelines / Repos</span>
                 <span>DevOps</span>
               </div>
             </div>
           </article>
 
+          <article class="tool-card" data-category="cicd">
+            <div class="tool-card-inner">
+              <div class="tool-category">Build Tool</div>
+              <div class="tool-name">
+                Apache Maven
+                <a href="https://maven.apache.org/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Used for building Java automation projects, managing dependencies and integrating test execution into CI pipelines.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Build automation</span>
+                <span>Java</span>
+              </div>
+            </div>
+          </article>
 
           <!-- Containerization -->
           <article class="tool-card" data-category="cicd">
@@ -832,7 +923,6 @@
             </div>
           </article>
 
-
           <!-- Cloud Platforms -->
           <article class="tool-card" data-category="cloud">
               <div class="tool-card-inner">
@@ -846,7 +936,7 @@
                   Used for hosting applications, automated tests, cloud infrastructure, and deployments.
                 </p>
                 <div class="tool-meta">
-                  <span class="pill">EC2 • S3 • Lambda</span>
+                  <span class="pill">EC2 / S3 / Lambda</span>
                   <span>AWS</span>
                 </div>
               </div>
@@ -864,7 +954,7 @@
                   Used for BigQuery analytics, cloud compute, dashboards, and automating QA workflows.
                 </p>
                 <div class="tool-meta">
-                  <span class="pill">BigQuery • GCE</span>
+                  <span class="pill">BigQuery / GCE</span>
                   <span>GCP</span>
                 </div>
               </div>
@@ -882,7 +972,7 @@
                   Used for pipelines, cloud storage, serverless compute and Azure DevOps automation.
                 </p>
                 <div class="tool-meta">
-                  <span class="pill">DevOps • Pipelines</span>
+                  <span class="pill">DevOps / Pipelines</span>
                   <span>Azure</span>
                 </div>
               </div>
@@ -1003,7 +1093,6 @@
             </div>
           </article>
 
-
           <!-- Code Inspection / Code Quality -->
           <article class="tool-card" data-category="inspection">
             <div class="tool-card-inner">
@@ -1095,7 +1184,6 @@
               </div>
             </div>
           </article>
-
 
           <!-- Observability -->
           <article class="tool-card" data-category="observability">
@@ -1407,10 +1495,101 @@
             </div>
           </article>
 
+          <!-- Programming Languages -->
+          <article class="tool-card" data-category="languages">
+            <div class="tool-card-inner">
+              <div class="tool-category">Language</div>
+              <div class="tool-name">
+                JavaScript
+                <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Used for Cypress, Playwright, UI scripts, API automation and QA tooling.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Automation</span>
+                <span>JavaScript</span>
+              </div>
+            </div>
+          </article>
 
+          <article class="tool-card" data-category="languages">
+            <div class="tool-card-inner">
+              <div class="tool-category">Language</div>
+              <div class="tool-name">
+                TypeScript
+                <a href="https://www.typescriptlang.org/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Used for Playwright frameworks, API testing and reusable automation utilities.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Typed automation</span>
+                <span>TypeScript</span>
+              </div>
+            </div>
+          </article>
 
+          <article class="tool-card" data-category="languages">
+            <div class="tool-card-inner">
+              <div class="tool-category">Language</div>
+              <div class="tool-name">
+                Python
+                <a href="https://www.python.org/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Used for Appium mobile automation, CLI tools and backend test utilities.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Automation</span>
+                <span>Python</span>
+              </div>
+            </div>
+          </article>
 
+          <article class="tool-card" data-category="languages">
+            <div class="tool-card-inner">
+              <div class="tool-category">Language</div>
+              <div class="tool-name">
+                Java
+                <a href="https://www.oracle.com/java/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Used for REST Assured API testing, TestNG frameworks and backend automation.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">Backend tests</span>
+                <span>Java</span>
+              </div>
+            </div>
+          </article>
 
+          <article class="tool-card" data-category="languages">
+            <div class="tool-card-inner">
+              <div class="tool-category">Language</div>
+              <div class="tool-name">
+                SQL
+                <a href="https://www.mysql.com/" target="_blank">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <p class="tool-desc">
+                Used for database validation, test-data setup and backend query debugging.
+              </p>
+              <div class="tool-meta">
+                <span class="pill">DB validation</span>
+                <span>SQL</span>
+              </div>
+            </div>
+          </article>
 
         </div>
         <p class="footer-note">
@@ -1446,7 +1625,6 @@
       });
     });
 
-    // Year in footer
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
